@@ -1,11 +1,11 @@
 <?php
- //ini_set('display_errors', 'On');
-// define('INCLUDE_CHECK',true);
+
 define('INCLUDE_CHECK',true);
-require 'login_panel.php';
+
+require 'debug.php';
+require 'view/login_panel/login_panel.php';
 
 ?>
-
     <body>
         <div id="main">
             <div class="container">
@@ -17,7 +17,10 @@ require 'login_panel.php';
         echo '<h2>Feel free to explore the available options on the panel above!</h2>';
         }
     else
-        echo '<h1>Please, login to explore the Openflow Datacenter!</h1>';
+    {
+        echo '<h1>Hello, Guest!</h1>';
+        echo '<h2>Please, login to explore the Openflow Datacenter!</h2>';
+    }
     ?>
 
         </div>
