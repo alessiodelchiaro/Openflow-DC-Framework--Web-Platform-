@@ -45,7 +45,28 @@ function request_vm($cpu, $ram, $disk, $io, $time, $now)
 
 function request_intervm_communication($vm_list)
 {
-	return True;
+	$socket = connect_controller("127.0.0.1","3000");
+	
+	//get the difference between $time and $date and convert to seconds
+	$a=strtotime($time);
+	$b=strtotime($now);
+	$secs = $a - $b;
+
+	$request_type = sizeof($vm_list);
+
+	//Construct the string to do the request
+	$vm_request_str = $request_type;
+	foreach ($vm_list as $vm_ip) {
+		$vm_request_str = $vm_request_str."/".$vm_ip;
+	}
+
+	socket_write($socket, $vm_request_str, strlen($vm_request_str)+10);
+	 
+    $result = socket_read($socket, 30);
+
+    socket_close($socket);
+
+	return $result;
 }
 
 ?>

@@ -9,7 +9,7 @@ $disk = $_POST['disk'];
 $io = $_POST['io'];
 $date = $_POST['date'];
 $date = strtotime($date);
-	$date = date("Y-m-d H:i:00", $date);
+$date = date("Y-m-d H:i:00", $date);
 $now = date("Y-m-d H:i:00", time());
 
 // request the vm allocation

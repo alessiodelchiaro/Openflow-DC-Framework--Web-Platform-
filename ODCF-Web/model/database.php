@@ -28,8 +28,6 @@ function get_vm($usr_name)
 
  	if ($query == False)
  		echo mysql_error();
- 	array_push($result,array("ID", "CPU (#Cores)", "RAM (MB)", "DISK (GB)", "IO (Mbps)","IP Address", "Expiration date", 
- 		"Date created", "Status", "Group ID"));
 
  	$row = mysql_fetch_assoc($query);
 	while($row != false)
@@ -51,4 +49,42 @@ function get_vm_group($vm_id)
 	return $row['group_id'];
 }
 
+function set_vm_group($vm_id, $vm_group){
+	mysql_query("update vm_groups set group_id=".$vm_group." where vm_id=".$vm_id.";");
+	echo "update vm_groups set group_id=".$vm_group." where vm_id=".$vm_id.";";
+}
+
+function insert_vm_group($vm_id, $vm_group)
+{
+	mysql_query("insert into vm_groups(group_id,vm_id) values (".$vm_group.",".$vm_id.")");
+	echo "insert into vm_groups(group_id,vm_id) values (".$vm_group.",".$vm_id.")";
+}
+
+function get_next_vm_groupid()
+{
+	$query = mysql_query("select max(group_id) from vm_groups");
+	$group_id = mysql_fetch_assoc($query)['max(group_id)'] +1;
+
+	return $group_id;
+}
+
+function get_vm_groupid($vm_group_list)
+{
+	$counter = 1;
+	$vm_group_str="";
+	foreach ($vm_group_list as $vm) {
+		if ($counter ==1)
+			$vm_group_str= $vm_group_str.$vm;
+		else
+			$vm_group_str= $vm_group_str.",".$vm;
+		$counter+=1;
+	}
+	
+	$query = mysql_query(" select min(id) from vm_groups where id not in (select group_id from vm_groups where vm_id not in (".$vm_group_str."))");
+	$group_id = mysql_fetch_assoc($query);
+	if ($group_id['min(id)']=="")
+		return 1;
+
+	return $group_id['min(id)'];
+}
 ?>

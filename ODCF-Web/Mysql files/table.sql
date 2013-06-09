@@ -15,7 +15,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `vms` (
   `id` int(11) NOT NULL auto_increment,
-  `usr_id` varchar(32) collate utf8_unicode_ci NOT NULL def\1ault '',
+  `usr_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
   `cpu` int(4) NOT NULL,
   `ram` int(4) NOT NULL,
   `disk` int(4) NOT NULL,

@@ -30,7 +30,7 @@ if(isset($_GET['logoff']))
 	$_SESSION = array();
 	session_destroy();
 	
-	header("Location: index.php");
+	header("Location: ../index.php");
 	exit;
 }
 if(isset($_POST['submit']))
@@ -197,7 +197,7 @@ if(isset($_SESSION['msg']))
             			<h2>View all Virtual Machines</h2>
             			<p class="grey"><a href="/view/vm_list.php">Click Here</a> to view a list of the current virtual machines</p>
             			<h2>Request a new Virtual Machines</h2>
-            			<p class="grey"><a href="/view/form.php">Click Here</a> to request a new virtual machine</p>
+            			<p class="grey"><a href="/view/vmrequestform.php">Click Here</a> to request a new virtual machine</p>
             		<?php
             		}
 	        	else{
@@ -303,8 +303,8 @@ if(isset($_SESSION['msg']))
 	        <li>Hello <?php echo isset($_SESSION['usr']) ? $_SESSION['usr'] : 'Guest';?>!</li>
 			<li class="sep">|</li>
 			<li id="toggle">
-				<a id="open" class="open" href="#"><?php echo isset($_SESSION['id'])?'Open Panel':'Log In | Register';?></a>
-				<a id="close" style="display: none;" class="close" href="#">Close Panel</a>			
+				<a id="open" class="open" href="#"><?php echo isset($_SESSION['id'])?'Click to expand':'Log In | Register';?></a>
+				<a id="close" style="display: none;" class="close" href="#">Click to collapse</a>			
 			</li>
 	    	<li class="right">&nbsp;</li>
 		</ul> 

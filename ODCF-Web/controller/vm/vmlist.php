@@ -10,7 +10,8 @@
                     //Get the List of vm's for this user
                     $vm_list = get_vm($_SESSION['usr']);
                     //Draw the header
-                    $table_title = $vm_list[0];
+                    $table_title = array("ID", "CPU (#Cores)", "RAM (MB)", "DISK (GB)", "IO (Mbps)","IP Address", "Expiration date", 
+                        "Date created", "Status", "Group ID");
                     $counter = 1;
                     foreach ($table_title as $column)
                     {
@@ -38,8 +39,6 @@
                 </tfoot>
             <tbody>
                 <?php
-                unset($vm_list[0]);
-
                 foreach ($vm_list as $vm)
                     {
                         echo "<tr>";
