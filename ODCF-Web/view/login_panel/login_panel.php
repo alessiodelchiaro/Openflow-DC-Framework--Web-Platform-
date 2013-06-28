@@ -188,9 +188,11 @@ if(isset($_SESSION['msg']))
 <!-- Panel -->
 <div id="toppanel">
 	<div id="panel">
+		<h1>Openflow Datacenter Web Platform</h1>
 		<div class="content clearfix">
+
 			<div class="left">
-				<h1>Openflow Datacenter Web Platform</h1>
+				
 				<?php
 				if(isset($_SESSION['id'])){
 					?>
@@ -198,11 +200,13 @@ if(isset($_SESSION['msg']))
             			<p class="grey"><a href="/view/vm_list.php">Click Here</a> to view a list of the current virtual machines</p>
             			<h2>Request a new Virtual Machines</h2>
             			<p class="grey"><a href="/view/vmrequestform.php">Click Here</a> to request a new virtual machine</p>
+            			<h2>Request Virtual Machine Groups</h2>
+            			<p class="grey"><a href="/view/vm_groups.php">Click Here</a> to request virtual machine groups</p>
             		<?php
             		}
 	        	else{
 	        		?>
-        			<h2>Please Register/Login</h2>		
+        			<h1>Please Register/Login</h1>		
 					<p class="grey">In order to have access to the virtual machine allocation you must be logged in!</p>
             		<?php
     		    	}
@@ -276,12 +280,11 @@ if(isset($_SESSION['msg']))
 			
 			?>
             
-            <div class="left">
+            <div class="left right">
             
-            <h1>Members panel</h1>
+            <h1>Account Settings</h1>
             
-            <p>You can put member-only data here</p>
-            <a href="registered.php">View a special member page</a>
+            <a href="registered.php">Click Here</a> to change your account settings
             <p>- or -</p>
             <a href="?logoff">Log off</a>
             

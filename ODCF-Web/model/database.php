@@ -51,7 +51,6 @@ function get_vm_group($vm_id)
 
 function set_vm_group($vm_id, $vm_group){
 	mysql_query("update vm_groups set group_id=".$vm_group." where vm_id=".$vm_id.";");
-	echo "update vm_groups set group_id=".$vm_group." where vm_id=".$vm_id.";";
 }
 
 function insert_vm_group($vm_id, $vm_group)
